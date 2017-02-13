@@ -15,7 +15,12 @@
     app.set('views', './');
 
     //mongoose.connect('mongodb://node:nodeuser@mongo.onmodulus.net:27017/uwO3mypu');     // connect to mongoDB database on modulus.io
-    mongoose.connect('mongodb://localhost/todo');
+    mongodb_connection_string = 'mongodb://localhost/todo';
+    if(process.env.OPENSHIFT_MONGODB_DB_URL){
+        mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
+    }
+
+    mongoose.connect(mongodb_connnection_string);
 
     // define model =================
    var Todo = mongoose.model('Todo', {
