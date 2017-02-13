@@ -20,7 +20,7 @@
         mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
     }
 
-    mongoose.connect(mongodb_connnection_string);
+    mongoose.connect(mongodb_connection_string);
 
     // define model =================
    var Todo = mongoose.model('Todo', {
